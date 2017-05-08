@@ -10,6 +10,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.security.PublicKey;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 
 
 public class MyLastQuote extends AppCompatActivity {
@@ -23,8 +25,22 @@ public class MyLastQuote extends AppCompatActivity {
         setContentView(R.layout.activity_my_last_quote);
 
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-        String  data = sharedPreferences.getString("Result", "") ;
-        TextView here = (TextView) findViewById(R.id.here);
-        here.setText(data);
+        String data = sharedPreferences.getString("Result", "") ;
+
+        Calendar c= Calendar.getInstance();
+        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy");
+        String currentDate= df.format(c.getTime());
+
+        if ( data != null){
+             if(!(data.equals(currentDate))){
+
+                TextView here = (TextView) findViewById(R.id.here);
+                here.setText(data);
+                //get a random number
+                //get String from the list
+                //set the Textview value
+             }
+        }
     }
+
 }
